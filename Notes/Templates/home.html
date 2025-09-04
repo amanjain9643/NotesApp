@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block start %}
+    <form method="POST">
+    {% csrf_token %}
+    <div>
+        
+        {% if request.user.is_authenticated %}
+        <h1>WELCOME , {{request.user.first_name}} {{request.user.last_name}},👋</h1>
+        {% endif %}
+    </div>
+    </form>
+{% endblock %}

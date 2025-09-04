@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+    <div class="flex justify-center font-extralight text-2xl mb-10 ">ADD NoTeS</div>
+    <form method="POST">
+    {% csrf_token %}
+
+    <div class="flex flex-col gap-12">
+        <div class="ml-10">
+            <textarea class="w-[1400px] h-[500px] p-5 resize-y border border-black " name="notes" placeholder="Write your notes here..."></textarea>
+        </div>
+        <div class="flex justify-center">
+            <button class="text-2xl" type="submit">Add</button>
+        </div>
+    </div>
+    </form>
+{% endblock %}

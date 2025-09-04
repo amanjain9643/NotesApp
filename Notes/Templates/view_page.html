@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block start %}
+<div class="ml-12">
+    <h1 class="text-xl">Welcome {{request.user.first_name}}  {{request.user.last_name}}</h1>
+    <div class="p-10 grid grid-cols-4 gap-12">
+        {% for note in queryset %}
+        <a href="/edit_notes/{{note.id}}">
+            <div class="border border-gray-700 w-[200px] h-[200px] p-10 ">
+                <h1>{{note.note|slice:":100"}}</h1>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block start %}
+<form method="post">
+  {% csrf_token %}
+
+<div class="bg-white h-screen w-screen text-white p-[50px]">
+
+    <div class="flex border flex-row rounded-2xl border-gray-700 bg- mt-6 text-black p-[100px] gap-[250px] h-[400px] w-[1100px] ml-[150px]">
+
+   <div class="flex flex-col gap-5">
+    <div>
+      <img src="https://static.vecteezy.com/system/resources/previews/040/248/872/non_2x/notes-icon-logo-design-template-vector.jpg" class="h-20 w-20">
+    </div>
+    <div>
+      <h3 class="font-extralight text-[30px]">Sign in</h3>
+    </div>
+    <div>
+      <h5 class="font-extralight text-[20px]">Use Your Account Details</h5>
+    </div>
+
+    </div>
+
+
+    <div class="flex flex-col gap-4">
+      <div>
+        <input 
+        class="shadow border border-gray-700  w-[400px] rounded p-3"
+          placeholder="Username"
+          name="username">
+      </div>
+      
+       <div>
+        <input 
+        class="shadow border border-gray-700 w-[400px] rounded p-3"
+        placeholder="Password" name="password" type="password">
+      </div>
+      
+
+        <div class="flex flex-col gap-10">
+            <div class="flex flex-row gap-10">
+                  <div>
+                    <h5 class="text-blue-600 font-semibold"><a href="/register/">Create Account</a></h5>
+                  </div>
+
+                  <div>
+                    <button   
+                    class="shadow border bg-blue-200 rounded-lg w-[90px]"
+                    type="submit">Submit</button>
+                  </div>
+            </div>
+            {% if messages %}
+            {% for message in messages %}
+            <div>
+                <ul>
+                <li>{{message}}</li>
+                </ul>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+
+         </div>
+
+
+    </div>
+
+
+    </div>
+
+</form>
+{% endblock %}

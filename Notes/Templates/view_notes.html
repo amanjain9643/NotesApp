@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block start %}
+{% for note in notes %}
+<h1>
+    {{note.date}}
+    <br>
+    {{note.time}}
+    <br>
+    {{note.note}}
+    <a href="/edit_notes/{{note.id}}">EDIT</a>
+    <button onclick="return confirm('Are you sure you want to delete this item?');"><a href="/delete_notes/{{note.id}}">DELETE</a></button>
+</h1>
+{% endfor %}
+{% endblock %}
