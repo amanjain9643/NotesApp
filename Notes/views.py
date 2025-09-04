@@ -64,7 +64,7 @@ def view_notes(request):
 def edit_notes(request,id):
     queryset=Notes.objects.get(id=id)
     if queryset.user.username!=request.user.username:
-        redirect('/view_notes/')
+        redirect('/view_page/')
     nota=queryset
     if request.method=="POST":
         note=request.POST.get("notes")
@@ -78,7 +78,7 @@ def edit_notes(request,id):
 def delete_notes(request,id):
     queryset=Notes.objects.get(id=id)
     queryset.delete()
-    return redirect('/view_notes/')
+    return redirect('/view_page/')
 
 
 def view_page(request):
