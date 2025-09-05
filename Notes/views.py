@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate  , login ,logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,HttpResponse , redirect
 from django.contrib import messages
+from django.contrib.auth.models import User
+# from django.contrib.auth import get_user_model
 
+# User=get_user_model()
 
 def login_page(request):
     if(request.method=="POST"):
@@ -33,6 +35,7 @@ def register_page(request):
         user=User.objects.create(first_name=FirstName,last_name=LastName,username=username)
         user.set_password(password)
         user.save()
+        return redirect('login_page')
 
     return render(request,"register_page.html")
 
@@ -53,6 +56,7 @@ def add_notes(request):
         note=Notes.objects.create(note=text,user=request.user)
         note.save()
         print("success")
+        return redirect('view_page')
     return render(request,'add_notes.html')
 
 @login_required(login_url='/login/')

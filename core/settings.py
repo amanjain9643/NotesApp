@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +40,9 @@ INSTALLED_APPS = [
     'tailwind',
     'theme'
 ]
+
+# AUTH_USER_MODEL='Notes.CustomUser'
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
