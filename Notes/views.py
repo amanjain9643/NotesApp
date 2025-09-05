@@ -4,9 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,HttpResponse , redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
-# from django.contrib.auth import get_user_model
-
-# User=get_user_model()
 
 def login_page(request):
     if(request.method=="POST"):
@@ -65,10 +62,10 @@ def view_notes(request):
     return render(request,"view_notes.html",context={"notes":note})
 
 @login_required(login_url='/login/')
-def edit_notes(request,id):
-    queryset=Notes.objects.get(id=id)
+def edit_notes(request,slug):
+    queryset=Notes.objects.get(slug=slug)
     if queryset.user.username!=request.user.username:
-        redirect('/view_page/')
+        redirect('view_page')
     nota=queryset
     if request.method=="POST":
         note=request.POST.get("notes")
@@ -79,10 +76,10 @@ def edit_notes(request,id):
 
 
 @login_required(login_url='/login/')
-def delete_notes(request,id):
-    queryset=Notes.objects.get(id=id)
+def delete_notes(request,slug):
+    queryset=Notes.objects.get(slug=slug)
     queryset.delete()
-    return redirect('/view_page/')
+    return redirect('view_page')
 
 
 def view_page(request):

@@ -41,8 +41,6 @@ INSTALLED_APPS = [
     'theme'
 ]
 
-# AUTH_USER_MODEL='Notes.CustomUser'
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
